@@ -13,7 +13,6 @@ RUN pip install dagster dagit dagster-dbt dagster-webserver dbt-bigquery dbt-cor
 # Add the rest of the app files
 ADD . $DAGSTER_HOME/cne_dagster
 
-WORKDIR $DAGSTER_HOME/cne_dagster/cne_dagster
 
 ENV DBT_PROFILE_PROJECT=tdw-staging \
     DBT_PROFILE=tikal_dbt \
@@ -23,6 +22,11 @@ ENV DBT_PROFILE_PROJECT=tdw-staging \
     BIGQUERY_KEYFILE_PATH=.keys/staging.json \ 
     SOURCE_DATABASE=dwh-dev-414206 \
     BIGQUERY_ACCOUNT=dwh-dev-414206 
+
+
+RUN cd $DAGSTER_HOME/cne_dagster/cne-dbt-template && dbt deps --quiet && dbt parse --quiet
+
+WORKDIR $DAGSTER_HOME/cne_dagster/cne_dagster
 
 
 # Set environment variable for production
