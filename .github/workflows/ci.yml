@@ -1,0 +1,24 @@
+name: DBT Build
+
+on:
+  push:
+    branches:
+      - main #
+  pull_request:
+    types: [closed, opened, synchronize]  # 👈 Add this trigger for PR closures      
+
+
+jobs:
+  run-dbt:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Docker buid
+        run: |        
+          docker build -t dagster . 
