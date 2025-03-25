@@ -30,6 +30,8 @@ jobs:
     
       - name: Build Docker image
         run: |
+          ls -la
+          ls -la  cne-dbt-template
           docker build -t ghcr.io/${{ github.repository }}/dagster_dbt:latest .
     
       - name: Push Docker image
