@@ -1,0 +1,3 @@
+[submodule "cne-dbt-template"]
+	path = cne-dbt-template
+	url = https://github.com/tikalk/cne-dbt-template.git
