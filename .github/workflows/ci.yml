@@ -28,6 +28,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
     
+      - name: Write BIGQUERY_KEYFILE_JSON to File
+        env:
+          BIGQUERY_KEYFILE_JSON_BASE64: ${{ secrets.BIGQUERY_KEYFILE_JSON_BASE64 }}
+        run: |
+          mkdir -p ./cne-dbt-template/.keys
+          echo "$BIGQUERY_KEYFILE_JSON_BASE64" | base64 --decode > ./cne-dbt-template/.keys/staging.json
+          echo "BIGQUERY_KEYFILE_PATH=./cne-dbt-template/.keys/staging.json" >> $GITHUB_ENV
+  
       - name: Build Docker image
         run: |
           ls -la

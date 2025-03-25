@@ -13,7 +13,6 @@ RUN pip install dagster dagit dagster-dbt dagster-webserver dbt-bigquery dbt-cor
 # Add the rest of the app files
 ADD . $DAGSTER_HOME/cne_dagster
 
-
 ENV DBT_PROFILE_PROJECT=tdw-staging \
     DBT_PROFILE=tikal_dbt \
     BIGQUERY_DATABASE=chaimt_dwh \
