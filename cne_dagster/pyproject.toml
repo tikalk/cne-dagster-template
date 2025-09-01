@@ -3,12 +3,13 @@ name = "cne_dagster"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.9,<3.13"
+requires-python = ">=3.11,<3.13"
 dependencies = [
-    "dagster",
+    "dagster>=1.10.6",
     "dagster-cloud",
-    "dagster-dbt",
-    "dbt-bigquery<1.10",
+    "dagster-dbt>=0.26.6",
+    "dbt-bigquery>=1.9.1",
+    "dbt-core>=1.9.3",
 ]
 
 [project.optional-dependencies]

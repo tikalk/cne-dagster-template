@@ -1,12 +1,22 @@
 # dbt compiled files
+target/
 /target/
+dbt_packages/
 /dbt_packages/
+logs/
 /logs/
+dbt_modules/
 /dbt_modules/
 
 edr_target/
 
+# dbt-specific files
 .user.yml
+partial_parse.msgpack
+perf_info.json
+semantic_manifest.json
+manifest.concurrent-update-lock
+
 .env
 .env.bak
 
@@ -79,6 +89,19 @@ notebooks/playground/*
 
 logs/
 .qodo
+
+# Dagster files
+.tmp_dagster_home_*
+dagster_home/
+.dagster/
+*.db
+*.db-shm
+*.db-wal
+
+# Dagster temporary files
+.dagster_storage/
+dagster-webserver.pid
+dagster-daemon.pid
 
 #keys
 .keys/
